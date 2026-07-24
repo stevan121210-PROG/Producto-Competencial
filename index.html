@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shinsushii - El arte del sushi, fresco y cerca de ti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="navbar-logo">
+                Shinsushii
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="home-overlay"></div>
+        <div class="home-content">
+            <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="home-logo">
+            <h1 class="logo-text">Shinsushii</h1>
+            <p class="slogan">El arte del sushi, fresco y cerca de ti</p>
+            <p class="description">Emprendimiento escolar de comida rápida oriental, ofreciendo rollos de sushi
+                artesanales, frescos y de excelente calidad para la semana cultural.</p>
+            <a href="#menu" class="btn">Ver Menú</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2>Nuestro Menú</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-card-image"
+                        style="background-image: url('https://coresg-normal.trae.ai/api/v1/text-to-image?prompt=delicious%20shrimp%20sushi%20roll%20with%20philadelphia%20cream%20cheese%20and%20mango%20on%20a%20white%20plate%2C%20gourmet%20presentation&image_size=square_hd')">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3>Rollo Especial</h3>
+                        <p class="ingredients">Camarón, Queso Philadelphia, Mango/Aguacate, Panko</p>
+                        <p class="price">$12.000 COP</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image"
+                        style="background-image: url('https://coresg-normal.trae.ai/api/v1/text-to-image?prompt=classic%20chicken%20sushi%20roll%20with%20palm%20heart%2C%20traditional%20presentation&image_size=square_hd')">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3>Rollo Clásico</h3>
+                        <p class="ingredients">Pollo, Palmito, Queso crema</p>
+                        <p class="price">$10.000 COP</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ingredients-list">
+                <h3>Ingredientes Oficiales</h3>
+                <ul>
+                    <li>Arroz botan</li>
+                    <li>Panko</li>
+                    <li>Camarones</li>
+                    <li>Pollo (pechuga)</li>
+                    <li>Algas (Nori)</li>
+                    <li>Palmito</li>
+                    <li>Queso crema</li>
+                    <li>Queso crema Philadelphia</li>
+                    <li>Mango</li>
+                    <li>Aguacate</li>
+                    <li>Harina, sal, azúcar, vinagre, aceite y ajonjolí</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>¡Aparta Tu Porción!</h2>
+            <p class="contact-description">Completa el formulario para reservar tus rollos de sushi para la feria.</p>
+            <form id="orderForm" class="order-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp">Tu Número de WhatsApp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="3001234567" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Curso</label>
+                    <input type="text" id="course" name="course" required>
+                </div>
+                <div class="form-group">
+                    <label for="product">Producto</label>
+                    <select id="product" name="product" required>
+                        <option value="">Selecciona un producto</option>
+                        <option value="especial">Rollo Especial - $12.000 COP</option>
+                        <option value="clasico">Rollo Clásico - $10.000 COP</option>
+                        <option value="ambos">Ambos Rollos</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" id="quantity" name="quantity" min="1" required>
+                </div>
+                <button type="submit" class="btn">Enviar Pedido por WhatsApp</button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="footer-logo">
+            <p>&copy; 2026 Shinsushii. Emprendimiento escolar.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
