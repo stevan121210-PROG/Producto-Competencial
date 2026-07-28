@@ -2,9 +2,22 @@
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.querySelector('.nav-links');
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+if (menuToggle && navLinks) {
+    const toggleMenu = () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+        navLinks.classList.toggle('active');
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+    // Allow keyboard activation
+    menuToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+        }
+    });
+}
 
 // Close menu when clicking a link
 document.querySelectorAll('.nav-links a').forEach(link => {
@@ -52,8 +65,8 @@ menuCards.forEach(card => {
 // Order form submission with WhatsApp integration
 const orderForm = document.getElementById('orderForm');
 const formMessage = document.getElementById('formMessage');
-// Reemplaza este número con tu número de WhatsApp de negocio (incluye código de país, ej: 573001234567)
-const BUSINESS_WHATSAPP_NUMBER = '573001234567';
+// Números de WhatsApp de destino (Colombia +57)
+const BUSINESS_WHATSAPP_NUMBERS = ['573027473875', '573054454502'];
 
 orderForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -87,21 +100,36 @@ orderForm.addEventListener('submit', (e) => {
     
     // Encode message for URL
     const encodedMessage = encodeURIComponent(message);
-    
-    // Create WhatsApp link
-    const whatsappUrl = `https://wa.me/${BUSINESS_WHATSAPP_NUMBER}?text=${encodedMessage}`;
-    
-    // Open WhatsApp in new tab
-    window.open(whatsappUrl, '_blank');
-    
+    // Validación básica del número de WhatsApp (colombiano sin +57)
+    const phoneRegex = /^3\d{9}$/;
+    if (!phoneRegex.test(whatsapp)) {
+        formMessage.textContent = 'Por favor ingresa un número móvil colombiano válido (10 dígitos, iniciando en 3).';
+        formMessage.className = 'form-message error';
+        formMessage.style.display = 'block';
+        return;
+    }
+
+    // Disable submit to avoid múltiples envíos
+    const submitButton = orderForm.querySelector('button[type="submit"]');
+    if (submitButton) submitButton.disabled = true;
+
+    // Open WhatsApp links for each business number (intenta enviar a ambos destinatarios)
+    BUSINESS_WHATSAPP_NUMBERS.forEach((num) => {
+        const whatsappUrl = `https://wa.me/${num}?text=${encodedMessage}`;
+        const win = window.open(whatsappUrl, '_blank');
+        if (win) win.opener = null;
+    });
+
     // Show success message
     formMessage.textContent = `¡Redirigiendo a WhatsApp! Gracias ${name} por tu pedido.`;
     formMessage.className = 'form-message success';
+    formMessage.style.display = 'block';
     
     // Reset form after a short delay
     setTimeout(() => {
         orderForm.reset();
         formMessage.className = 'form-message';
         formMessage.style.display = 'none';
+        if (submitButton) submitButton.disabled = false;
     }, 3000);
 });

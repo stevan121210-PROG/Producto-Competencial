@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sushi artesanal para tu feria escolar — rollos frescos y pedidos por WhatsApp.">
     <title>Shinsushii - El arte del sushi, fresco y cerca de ti</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="assets/favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,15 +21,15 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="navbar-logo">
+                <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="navbar-logo" width="160" height="40" loading="lazy">
                 Shinsushii
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="main-nav">
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#menu">Menú</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <div class="menu-toggle" id="menuToggle" role="button" aria-controls="main-nav" aria-expanded="false" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -38,7 +41,7 @@
     <section id="home" class="home">
         <div class="home-overlay"></div>
         <div class="home-content">
-            <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="home-logo">
+            <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="home-logo" width="150" height="150" loading="lazy">
             <h1 class="logo-text">Shinsushii</h1>
             <p class="slogan">El arte del sushi, fresco y cerca de ti</p>
             <p class="description">Emprendimiento escolar de comida rápida oriental, ofreciendo rollos de sushi
@@ -104,7 +107,7 @@
                 </div>
                 <div class="form-group">
                     <label for="whatsapp">Tu Número de WhatsApp</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="3001234567" required>
+                    <input type="tel" id="whatsapp" name="whatsapp" inputmode="tel" pattern="^3[0-9]{9}$" title="Ingresa tu número móvil colombiano (10 dígitos, sin prefijo +57). Ej: 3001234567" placeholder="3001234567" required>
                 </div>
                 <div class="form-group">
                     <label for="course">Curso</label>
@@ -132,7 +135,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="footer-logo">
+            <img src="assets/Shinsushii_logo.jpg" alt="Shinsushii Logo" class="footer-logo" width="120" height="45" loading="lazy">
             <p>&copy; 2026 Shinsushii. Emprendimiento escolar.</p>
         </div>
     </footer>
